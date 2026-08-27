@@ -66,3 +66,7 @@ Copyright © 2026 上海如静知华信息科技有限公司。
 | ![微信咨询二维码一](docs/images/zhuatech-wechat-consulting.png) | ![微信咨询二维码二](docs/images/zhuatech-wechat-consulting-2.png) |
 
 SEO：产品全链路追溯系统、TRACE系统源码、企业数字化、Java企业系统、Vue管理系统、知华科技、上海如静知华信息科技有限公司。
+
+## V2.0 专业全链路追溯域
+
+新增批次、质量检验、放行、投入产出谱系、业务事件和召回模型。待检批次禁止进入仓储销售，来源批次只有检验放行后才能投产，投入数量不能超过可用数量；召回自动沿谱系计算所有下游影响批次。专业入口为“批次追溯中心”，API 根路径为 `/api/trace-ops`。

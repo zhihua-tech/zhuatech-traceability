@@ -36,3 +36,17 @@
 | `inspectionPassed` | boolean | 质量检验通过 |
 
 接口统一返回 `ApiResponse`；业务冲突使用 HTTP 409，参数错误使用 400，未认证使用 401，无权限使用 403。
+
+## 专业全链路追溯接口
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | `/api/trace-ops/dashboard` | 批次、事件与召回总览 |
+| POST | `/api/trace-ops/batches` | 建立批次 |
+| POST | `/api/trace-ops/batches/{id}/inspections` | 登记质量检验 |
+| POST | `/api/admin/trace-ops/batches/{id}/release` | 质量放行 |
+| POST | `/api/trace-ops/genealogy` | 建立投入产出谱系 |
+| POST | `/api/trace-ops/batches/{id}/events` | 登记生产、仓储或销售事件 |
+| POST | `/api/trace-ops/recalls` | 启动召回并计算影响批次 |
+| POST | `/api/trace-ops/recalls/{id}/notify` | 完成召回通知 |
+| POST | `/api/admin/trace-ops/recalls/{id}/close` | 关闭召回 |
