@@ -1,0 +1,85 @@
+{
+  "slug": "traceability",
+  "title": "批次追溯投入产出平衡预检",
+  "fields": [
+    {
+      "key": "event_no",
+      "label": "事件号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "parent_lot",
+      "label": "投入批次",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "output_lot",
+      "label": "产出批次",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "input_qty",
+      "label": "投入数量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    },
+    {
+      "key": "output_qty",
+      "label": "产出数量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    },
+    {
+      "key": "scrap_qty",
+      "label": "损耗数量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    }
+  ],
+  "unique": [
+    [
+      "event_no"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "DIFFERENT",
+      "args": [
+        "parent_lot",
+        "output_lot"
+      ],
+      "code": "LOT_SELF_REFERENCE",
+      "message": "投入批次不能等于产出批次",
+      "bad": {
+        "output_lot": "LOT-A"
+      }
+    },
+    {
+      "op": "SUM_EQ",
+      "args": [
+        "output_qty",
+        "scrap_qty",
+        "input_qty"
+      ],
+      "code": "LOT_BALANCE",
+      "message": "产出加损耗必须等于投入",
+      "bad": {
+        "output_qty": "96"
+      }
+    }
+  ],
+  "sampleCsv": "event_no,parent_lot,output_lot,input_qty,output_qty,scrap_qty\nTRC-001,LOT-A,LOT-B,100,95,5\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
