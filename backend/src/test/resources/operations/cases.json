@@ -1,0 +1,53 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "HOLD",
+      "unlocatedQty": "#100",
+      "customerOutstandingQty": "#200",
+      "remainingControlledQty": "#600"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "quarantined": "400"
+    },
+    "expected": {
+      "decision": "REVIEW",
+      "unlocatedQty": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "quarantined": "400",
+      "recovered": "600"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "recovered": "601"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "destroyed": "701"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "quarantined": "401"
+    },
+    "expected": {},
+    "error": true
+  }
+]

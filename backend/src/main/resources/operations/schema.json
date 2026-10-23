@@ -1,0 +1,88 @@
+{
+  "slug": "traceability",
+  "title": "召回流向数量与已回收覆盖核对",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "affectedQty",
+      "label": "受影响批次数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "quarantined",
+      "label": "库内隔离数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "shipped",
+      "label": "外发数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "recovered",
+      "label": "外发后已回收数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "destroyed",
+      "label": "隔离或回收后已报废数量",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "unlocatedQty",
+      "label": "尚未定位数量"
+    },
+    {
+      "key": "customerOutstandingQty",
+      "label": "客户侧未回收数量"
+    },
+    {
+      "key": "controlledBeforeDestruction",
+      "label": "报废前累计受控数量"
+    },
+    {
+      "key": "remainingControlledQty",
+      "label": "报废后受控库存"
+    }
+  ],
+  "description": "将受影响批量、库内隔离和已向外发货数量对齐，核对已回收及报废量，突出未定位和客户侧未回收。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "affectedQty": "1000",
+        "quarantined": "300",
+        "shipped": "600",
+        "recovered": "400",
+        "destroyed": "100"
+      }
+    ]
+  }
+}
